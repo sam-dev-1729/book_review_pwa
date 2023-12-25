@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Book list
+{% endblock title %}
+{% include "partial/header.html" %}
+<div>
+    {% block content %}
+        <!-- ***** Main Banner Area Start ***** -->
+        <div class="page-heading" id="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner-content">
+                            <h2>Check Our Products</h2>
+                            <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Main Banner Area End ***** -->
+        <!-- ***** Products Area Starts ***** -->
+        <section class="section" id="products">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>Our Latest Products</h2>
+                            <span>Check out all of our products.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    {% if object_list %}
+                        {% for book in object_list %}
+                            {% include "partial/book_card.html" with book=book %}
+                        {% endfor %}
+                    {% else %}
+                        <h2>there is no book</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!-- ***** Products Area Ends ***** -->
+        <!-- ***** Footer Start ***** -->
+        <!-- jQuery -->
+        <script src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+        <!-- Bootstrap -->
+        <script src="{% static "js/popper.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <!-- Plugins -->
+        <script src="{% static "js/owl-carousel.js" %}"></script>
+        <script src="{% static "js/accordions.js" %}"></script>
+        <script src="{% static "js/datepicker.js" %}"></script>
+        <script src="{% static "js/scrollreveal.min.js" %}"></script>
+        <script src="{% static "js/waypoints.min.js" %}"></script>
+        <script src="{% static "js/jquery.counterup.min.js" %}"></script>
+        <script src="{% static "js/imgfix.min.js" %}"></script>
+        <script src="{% static "js/slick.js" %}"></script>
+        <script src="{% static "js/lightbox.js" %}"></script>
+        <script src="{% static "js/isotope.js" %}"></script>
+        <!-- Global Init -->
+        <script src="{% static "js/custom.js" %}"></script>
+        <script>
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+            });
+        });
+
+        </script>
+    {% endblock content %}
+</div>

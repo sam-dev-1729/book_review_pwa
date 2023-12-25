@@ -1,0 +1,74 @@
+{% comment %}
+
+
+jinja command for load static assets
+{% load static %}
+
+jinja command for load asset (like images)
+"{% static 'asset-address' %}"
+
+jinja command for extends
+{% extends "file-name.html" %}
+
+jinja command for add dynamic block
+{% block blockName %}
+{% endblock blockName %}
+
+jinja command for call component
+{% include "file-name.html" %}
+can send data to partial like this : {% include "file-name.html" with dataName=data %}
+
+
+jinja command for if
+{% if condition %}
+{% else %}
+{% endif %}
+
+'for' in jinja
+{% for %} {% endfor %}
+
+jinja command for url link
+{% url 'recipes:delete' pk=recipe.pk %}
+
+{% endcomment %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+              rel="stylesheet">
+        <title>
+            {% block title %}
+                Book Review
+            {% endblock title %}
+        </title>
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}">
+        <link rel="stylesheet" href="{% static "css/templatemo-hexashop.css" %}">
+        <link rel="stylesheet" href="{% static "css/owl-carousel.css" %}">
+        <link rel="stylesheet" href="{% static "css/lightbox.css" %}">
+        <!--
+            TemplateMo 571 Hexashop
+
+            https://templatemo.com/tm-571-hexashop
+
+            -->
+    </head>
+    <body>
+        <div>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+    {% include "partial/footer.html" %}
+</html>

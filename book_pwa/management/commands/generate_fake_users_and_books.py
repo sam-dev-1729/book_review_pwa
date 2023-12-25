@@ -4,7 +4,7 @@ from django.core.management.base import CommandParser
 from django.utils.crypto import get_random_string
 from faker import Faker
 
-from book_pwa.models import Book, Genre, Review
+from book_pwa.models import Author, Book, Genre, Review
 
 User = get_user_model()
 
@@ -40,20 +40,34 @@ class Command(BaseCommand):
     def generate_fake_users(self, total_users):
         for i in range(total_users):
             fake = Faker()
+            name = fake.name()
             username = fake.user_name() + str(i)
             email = fake.email()
             password = get_random_string(length=12)
-            User.objects.create_user(
+            user = User.objects.create_user(
                 username=username, email=email, password=password
             )
+            Author.objects.create(name=name, user=user)
 
     def generate_fake_books(self, total_books):
+        book_geners = [
+            "Fantasy",
+            "Adventure",
+            "Romance",
+            "Contemporary",
+            "Dystopian",
+            "Mystery",
+            "Horror",
+        ]
+        for i in range(len(book_geners)):
+            Genre.objects.create(name=book_geners[i])
+
         genres = Genre.objects.all()
         reviews_list = Review.objects.all()
         for i in range(total_books):
             fake = Faker()
             title = fake.user_name() + str(i)
-            author = User.objects.order_by("?").first()
+            author = Author.objects.order_by("?").first()
             book = Book.objects.create(title=title, author=author)
 
             book.genre.set(
