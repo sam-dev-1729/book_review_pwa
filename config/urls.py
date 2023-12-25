@@ -17,7 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from book_pwa.views import AboutUsView, ContantView, IndexView
+
 urlpatterns = [
+    path("", IndexView.as_view(), name="index"),
+    path("about-us", AboutUsView.as_view(), name="about"),
+    path("about-us", ContantView.as_view(), name="contact"),
     path("books/", include("book_pwa.urls")),
     path("admin/", admin.site.urls),
 ]

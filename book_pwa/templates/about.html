@@ -1,8 +1,8 @@
+{% extends "base.html" %}
 {% load static %}
 {% block title %}
-    Bookshop - About Page
+    About Us
 {% endblock title %}
-{% include "partial/header.html" %}
 {% block content %}
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading about-page-heading" id="top">
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="left-image">
-                        <img src="{% static "images/about-left-image.png" %}" alt="" />
+                        <img src="{% static "images/default.png" %}" alt="" />
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -310,5 +310,3 @@
     </div>
     <!-- ***** Subscribe Area Ends ***** -->
 {% endblock content %}
-{% include "partial/footer.html" %}
-{% include "partial/scripts.html" %}

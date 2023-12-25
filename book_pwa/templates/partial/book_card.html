@@ -15,10 +15,17 @@
                     </li>
                 </ul>
             </div> {% endcomment %}
-            <img src="{% static "images/men-01.jpg" %}" alt="">
+            <img src="{% static "images/default.jpg" %}" alt="">
         </div>
         <div class="down-content">
-            <h4>{{ book.title }}</h4>
+            <h6>title:</h6>
+            <h5>{{ book.title }}</h5>
+            {% if genre %}
+                <h3>genres:</h3>
+                {% for gen in book.genre %}<h3>{{ gen }}</h3>{% endfor %}
+            {% else %}
+            {% endif %}
+            <a href="{% url 'book:details' pk=book.pk %}" class="btn btn-primary">Details</a>
             <ul class="stars">
                 <li>
                     <i class="fa fa-star"></i>

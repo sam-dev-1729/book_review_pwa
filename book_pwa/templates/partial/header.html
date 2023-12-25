@@ -6,24 +6,24 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="{% url "index.html" %}" class="logo">
-                        <img src="{% static "images/logo.png" %}" alt="">
+                    <a href="{% url "index" %}" class="logo">
+                        <img src="{% static "images/logo.png" %}"  alt="" />
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section">
-                            <a href="#top" class="active">Home</a>
+                            <a href="{% url "index" %}" class="active">Home</a>
                         </li>
-                        <li class="scroll-to-section">
-                            <a href="#men">Men's</a>
+                        <li>
+                            <a href="{% url "about" %}">About Us</a>
                         </li>
-                        <li class="scroll-to-section">
-                            <a href="#women">Women's</a>
+                        <li>
+                            <a href="{% url "book:list" %}">Books</a>
                         </li>
-                        <li class="scroll-to-section">
-                            <a href="#kids">Kid's</a>
-                        </li>
+                        {% comment %} <li>
+                                    <a href="{% url "single-product.html"%}">Single Product</a>
+                        </li> {% endcomment %}
                         <li class="scroll-to-section">
                             <a href="#explore">Explore</a>
                         </li>
