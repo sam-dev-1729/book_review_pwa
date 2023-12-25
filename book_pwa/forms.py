@@ -8,17 +8,11 @@ class ReviewForm(forms.ModelForm):
         model = Review
         exclude = ["user"]
         widgets = {
-            "rating": forms.TextInput(
-                attrs={
-                    "class": "form-control",
-                    "placeholder": "give this book rate ",
-                }
-            ),
             "content": forms.Textarea(
                 attrs={
                     "class": "form-control",
                     "placeholder": "Write a comment",
                 }
             ),
-            # "rating": forms.Select(attrs={"class": "form-select"}),
+            "rating": forms.Select(attrs={"class": "form-select"}),
         }
